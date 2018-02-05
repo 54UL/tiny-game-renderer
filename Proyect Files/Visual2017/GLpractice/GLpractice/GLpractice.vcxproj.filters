@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de origen">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado\System">
+      <UniqueIdentifier>{796d8947-475f-4ffa-ae13-86022f2d38f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\System\ModelLoading">
+      <UniqueIdentifier>{228f6bac-0494-4ca7-9b0b-a9400ac1612f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Rendering">
+      <UniqueIdentifier>{5a31729b-3426-4d1e-98a5-ef1e404f939d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\system">
+      <UniqueIdentifier>{bd1dc1e3-d13e-4fad-856c-ec3cec1ca6a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\system\ModelLoading">
+      <UniqueIdentifier>{ab150652-1e7f-46d7-98b9-a6f14b46ed63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\render">
+      <UniqueIdentifier>{4063cba4-6011-40e4-8dee-146bdeff06d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\components">
+      <UniqueIdentifier>{2664b910-a5ab-4bae-a055-bebc2378fbbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\components">
+      <UniqueIdentifier>{331b87ca-e883-4452-8e09-6e4beac1db14}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="System\ArrayList.cpp">
+      <Filter>Archivos de origen\system</Filter>
+    </ClCompile>
+    <ClCompile Include="System\FileIO.cpp">
+      <Filter>Archivos de origen\system</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\Shader.cpp">
+      <Filter>Archivos de origen\render</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\GLtexture.cpp">
+      <Filter>Archivos de origen\render</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\GLmesh.cpp">
+      <Filter>Archivos de origen\render</Filter>
+    </ClCompile>
+    <ClCompile Include="System\ModelHandling\modelFormat.cpp">
+      <Filter>Archivos de origen\system\ModelLoading</Filter>
+    </ClCompile>
+    <ClCompile Include="System\ModelHandling\modelParser.cpp">
+      <Filter>Archivos de origen\system\ModelLoading</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Camera.cpp">
+      <Filter>Archivos de origen\components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\material.cpp">
+      <Filter>Archivos de origen\components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\ModelObject.cpp">
+      <Filter>Archivos de origen\components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Transform.cpp">
+      <Filter>Archivos de origen\components</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="System\ArrayList.h">
+      <Filter>Archivos de encabezado\System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\FileIO.h">
+      <Filter>Archivos de encabezado\System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\ModelHandling\modelFormat.h">
+      <Filter>Archivos de encabezado\System\ModelLoading</Filter>
+    </ClInclude>
+    <ClInclude Include="System\ModelHandling\modelParser.h">
+      <Filter>Archivos de encabezado\System\ModelLoading</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\GLmesh.h">
+      <Filter>Archivos de encabezado\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\GLtexture.h">
+      <Filter>Archivos de encabezado\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\Shader.h">
+      <Filter>Archivos de encabezado\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Camera.h">
+      <Filter>Archivos de encabezado\components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\material.h">
+      <Filter>Archivos de encabezado\components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Transform.h">
+      <Filter>Archivos de encabezado\components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\ModelObject.h">
+      <Filter>Archivos de encabezado\components</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
