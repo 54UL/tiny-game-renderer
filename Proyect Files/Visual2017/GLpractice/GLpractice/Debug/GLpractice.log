@@ -1,2 +1,42 @@
-﻿  material.cpp
+﻿  main.cpp
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.h(11): warning C4091: 'typedef ': se ha omitido a la izquierda de 'MODEL_FEATURES' cuando no hay ninguna variable declarada
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelformat.h(52): warning C4091: 'typedef ': se ha omitido a la izquierda de 'modelFormat' cuando no hay ninguna variable declarada
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\rendering\glmesh.h(14): warning C4091: 'typedef ': se ha omitido a la izquierda de 'MESH_GL_FORMAT' cuando no hay ninguna variable declarada
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\main.cpp(83): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\main.cpp(139): warning C4305: '=': truncamiento de 'double' a 'float'
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\main.cpp(191): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\main.cpp(192): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\main.cpp(193): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\main.cpp(194): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\main.cpp(212): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
+  modelParser.cpp
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelformat.h(52): warning C4091: 'typedef ': se ha omitido a la izquierda de 'modelFormat' cuando no hay ninguna variable declarada
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.h(11): warning C4091: 'typedef ': se ha omitido a la izquierda de 'MODEL_FEATURES' cuando no hay ninguna variable declarada
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.cpp(41): warning C4267: 'inicializando': conversión de 'size_t' a 'short'; posible pérdida de datos
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.cpp(45): warning C4267: 'inicializando': conversión de 'size_t' a 'short'; posible pérdida de datos
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.cpp(123): warning C4554: '&': compruebe la prioridad de operador para posibles errores; utilice paréntesis para indicar la prioridad
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.cpp(183): warning C4806: '|': operación no segura: ningún valor del tipo 'bool' promovido al tipo 'MODEL_FEATURES' puede igualar la constante proporcionada
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.cpp(183): warning C4554: '|': compruebe la prioridad de operador para posibles errores; utilice paréntesis para indicar la prioridad
+  modelFormat.cpp
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.h(11): warning C4091: 'typedef ': se ha omitido a la izquierda de 'MODEL_FEATURES' cuando no hay ninguna variable declarada
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelformat.h(52): warning C4091: 'typedef ': se ha omitido a la izquierda de 'modelFormat' cuando no hay ninguna variable declarada
+  FileIO.cpp
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\fileio.cpp(30): warning C4244: '=': conversión de 'std::streamoff' a 'int'; posible pérdida de datos
+  ArrayList.cpp
+  Shader.cpp
+  GLtexture.cpp
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\rendering\gltexture.cpp(54): warning C4018: '<=': no coinciden signed/unsigned
+  GLmesh.cpp
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.h(11): warning C4091: 'typedef ': se ha omitido a la izquierda de 'MODEL_FEATURES' cuando no hay ninguna variable declarada
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelformat.h(52): warning C4091: 'typedef ': se ha omitido a la izquierda de 'modelFormat' cuando no hay ninguna variable declarada
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\rendering\glmesh.h(14): warning C4091: 'typedef ': se ha omitido a la izquierda de 'MESH_GL_FORMAT' cuando no hay ninguna variable declarada
+  material.cpp
+  Transform.cpp
+  ModelObject.cpp
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.h(11): warning C4091: 'typedef ': se ha omitido a la izquierda de 'MODEL_FEATURES' cuando no hay ninguna variable declarada
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelformat.h(52): warning C4091: 'typedef ': se ha omitido a la izquierda de 'modelFormat' cuando no hay ninguna variable declarada
+c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\rendering\glmesh.h(14): warning C4091: 'typedef ': se ha omitido a la izquierda de 'MESH_GL_FORMAT' cuando no hay ninguna variable declarada
+  Camera.cpp
+  Generando código...
+  LINK : no se encontró C:\Users\Saul\Documents\GitHub\tiny-game-renderer\Proyect Files\Visual2017\GLpractice\Debug\GLpractice.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
   GLpractice.vcxproj -> C:\Users\Saul\Documents\GitHub\tiny-game-renderer\Proyect Files\Visual2017\GLpractice\Debug\GLpractice.exe
