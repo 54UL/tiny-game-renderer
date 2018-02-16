@@ -16,6 +16,8 @@
 
 
 
+//estas funciones hacerlas miembros
+
 //pos means the character where is going to start the search
 static int findSpace(std::string * str, unsigned int pos, bool FindFirstorLast)
 {
@@ -33,25 +35,41 @@ static int findSpace(std::string * str, unsigned int pos, bool FindFirstorLast)
 }
 
 
+
+
 static glm::ivec3 getParsedFaceIndex(std::string & vertIndexstr)
 {
-	
-	glm::ivec3 tmpvec = glm::ivec3();
+	glm::vec3 tmpvec3;
+	unsigned int pos1 = vertIndexstr.find("/", 0);
+	std::string xd1 = vertIndexstr.substr(0, pos1).c_str();
+	tmpvec3.x = atoi(xd1.c_str());
 
-	short int pos = vertIndexstr.find("/", 0);
-	std::string VertexIndex = vertIndexstr.substr(0, pos);
-	tmpvec.x = atoi(VertexIndex.c_str());
-	
-	short int pos2 = vertIndexstr.find("/", pos + 1);
-	std::string TextureCoordIndex = vertIndexstr.substr(pos + 1, pos2 - pos);
-	tmpvec.y = atoi(TextureCoordIndex.c_str());
-    
-	std::string VertexNormalIndex = vertIndexstr.substr(pos2+1);
-	tmpvec.z = atoi(VertexNormalIndex.c_str());
+	if (vertIndexstr.compare(pos1, 2, "//") == 0)
+	{
+		tmpvec3.y = 0;
+		std::string xd = vertIndexstr.substr(pos1 + 2).c_str();
+		tmpvec3.z = atoi(xd.c_str());
+	}
+	else
+	{
+		std::cout << "texture coords indecing not implemented" << std::endl;
+	}
 
-	return tmpvec;
+	return tmpvec3;
+}
+
+
+
+static glm::vec3 getParsedVertex3(std::string & vertStr)
+{
+
+
 
 }
+
+
+
+
 
 modelParser::modelParser()
 {
@@ -197,11 +215,11 @@ modelParser::OpenModel(const char  * fname,  MODEL_FORMAT FORMAT, modelFormat * 
 					glm::ivec3 Vertexx = getParsedFaceIndex(vx);
 					glm::ivec3 Vertexy = getParsedFaceIndex(vy);
 					glm::ivec3 Vertexz = getParsedFaceIndex(vz);
-					glm::ivec3 Vertexw = getParsedFaceIndex(vw);
+				//	glm::ivec3 Vertexw = getParsedFaceIndex(vw);  no aceptaremos modelos con 4 vertices por cara (de afuerzas triangulado)
 					container->FaceIndices.push_back(Vertexx);
 					container->FaceIndices.push_back(Vertexy);
 					container->FaceIndices.push_back(Vertexz);
-					container->FaceIndices.push_back(Vertexw);
+					//container->FaceIndices.push_back(Vertexw);
 					//	std::cout << Vertexx.x << "/" << Vertexx.y << "/" << Vertexx.z << " "
 					//		<< Vertexy.x << "/" << Vertexy.y << "/" << Vertexy.z << " "
 					//		<< Vertexz.x << "/" << Vertexz.y << "/" << Vertexz.z << " "
@@ -210,11 +228,29 @@ modelParser::OpenModel(const char  * fname,  MODEL_FORMAT FORMAT, modelFormat * 
 				}
 				else  if (m_CurrentContentFeatures == MODEL_FEATURES::textureCoord)
 				{
-					std::cout << "no implementado" << std::endl;
+					
 				}
 				else if (m_CurrentContentFeatures == MODEL_FEATURES::vertexNormal)
 				{
-					std::cout << "no implementado"<<std::endl;
+
+					//buscamos las islas de informacion 
+			        
+					unsigned int firstpos = findSpace(&Line, 0, false);
+
+
+
+					 
+	
+				//	glm::ivec3 Vertexx = getParsedFaceIndex(vx);
+				//	glm::ivec3 Vertexy = getParsedFaceIndex(vy);
+				//	glm::ivec3 Vertexz = getParsedFaceIndex(vz);
+			
+
+
+				//	container->FaceIndices.push_back(Vertexx);
+				//	container->FaceIndices.push_back(Vertexy);
+				//	container->FaceIndices.push_back(Vertexz);
+			
 				}
 				else
 					std::cout << "no implementado" << std::endl;

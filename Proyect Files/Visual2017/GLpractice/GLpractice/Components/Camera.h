@@ -15,8 +15,9 @@ public:
 	glm::mat4 GetProyectionMatrix();
     void SetOrtho(int ScreenXSz,int ScreenYSz);
     void SetPrespective(int ScreenXSz, int ScreenYSz, float FOV, float Znear);
-
+	bool isSetPrespective();
 private:
+	bool ispresp;
 	//miembros
 	glm::mat4 ProjectionMatrix;
     //CameraValues

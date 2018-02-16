@@ -13,97 +13,127 @@
 #include "Components\Transform.h"
 #include "System\ModelHandling\modelParser.h"
 
-//Class
-glm::vec3 vertices[] = {
-	glm::vec3(-0.5f, -0.5f, 0.0f),
-	glm::vec3(0.5f, -0.5f, 0.0f),
-	glm::vec3(0.0f,  0.5f, 0.0f)
-};
 
 
-//NO TIENE INDICES ASI QUE NO FUNCA...(se genero en un .obj)
-glm::vec3 GizmoVertices[]
-{
-	glm::vec3(-1.000000 ,-1.000000, 1.000000),
-	glm::vec3(-1.000000, 1.000000, 1.000000),
-	glm::vec3(-1.000000, -1.000000, -1.000000),
-	glm::vec3(-1.000000, 1.000000, -1.000000),
-	glm::vec3(1.000000, -1.000000, 1.000000),
-	glm::vec3(1.000000, 1.000000, 1.000000),
-	glm::vec3(1.000000, -1.000000, -1.000000),
-	glm::vec3(1.000000, 1.000000, -1.000000),
-	glm::vec3(-1.000000, -1.000000, -5.930170),
-	glm::vec3(-1.000000, 1.000000, -5.930170),
-	glm::vec3(1.000000, 1.000000, -5.930170),
-	glm::vec3(1.000000, -1.000000, -5.930170),
-	glm::vec3(5.930170, -1.000000 ,-1.000000),
-	glm::vec3(5.930170, 1.000000, -1.000000),
-	glm::vec3(5.930170, 1.000000, 1.000000),
-	glm::vec3(5.930170, -1.000000, 1.000000),
-	glm::vec3(1.000000, 5.930170, -1.000000),
-	glm::vec3(-1.000000, 5.930170, -1.000000),
-	glm::vec3(-1.000000 ,5.930170, 1.000000),
-	glm::vec3(1.000000 ,5.930170, 1.000000)
-};
+/*
+por hacer:
+	 agregar tiempo delta... importante!! xd
+    implementar operadores sobrecargados y constructores requeridos(gltexture,glmesh,etc)
 
+	checar el sistema de renderizado (centralizar)
+
+	funcion de creear malla a partir de otra tambien con las demas primitivas de gl(texturas y shaders) = con operadores
+
+	checar sistema de camara(no funciona ortografico)
+
+	checar sistema de materiales(algo huele a pescado ahi )
+
+	checar el parser y optimizarlo(no funciona bien con los vertex normals)
+
+	verificar que no haya memory leaks
+
+	implementar mas cosas del transform
+
+	agregar funcion de compilar shaders en tiempo de ejecucion
+
+	shaders: implementar sistema de luz sencillo
+
+
+	to do especiales:
+
+	implementar sistema de ventanas, niveles(scenes) y resources loaders
+	multi threading
+
+	implementar sistema de fisica
+	implementar sistema de audio
+
+*/
 
 inline void ProccesWindow()
 
 {
+	
 	system("color 0a");
-	//Mouse Things
+	//control things (ghost camera propierties)
 	glm::vec2 MouseDelta;
 	float lasty=0, lastx=0, Mousex=0, Mousey=0;
-	float MouseMultplier = 0.004f;
+	float MouseMultplier = 0.4f;
 	bool firstPass=true;
-
-
 	bool LookCursor=true;
 	float valueinput=0;
 	float valueinput2 = 0;
-
 	float valueinpu3 = 0;
 	float valueinput4 = 0;
+	
+	float elevar = 0;
+	float aceleracion = 1;
+
+	float shiftspeed = 10;
+
+	float	angulogiro = 0;
 
 	// create the window
-	sf::Window window(sf::VideoMode(800, 600), "Carenae framework(gl)", sf::Style::Default, sf::ContextSettings(8, 8, 4, 4, 6, 0, false));
+	sf::Window window(sf::VideoMode(800, 600), "opengl saulitos", sf::Style::Default, sf::ContextSettings(8, 8, 4, 4, 6, 0, false));
 	window.setVerticalSyncEnabled(true);
-	window.setFramerateLimit(60);
+	window.setFramerateLimit(120);
 
+	
 
-	// load resources, initialize the OpenGL states, ...
+	
 	GLenum err = glewInit();
 	if (GLEW_OK != err)
 		std::cout << "errorxd" << std::endl;
  
     
-	std::cout << sizeof(Transform) << std::endl;
 
-	//My objects
-	Camera  Camara(window.getSize().x, window.getSize().y,60,0.1);
+
+
+	Camera  Camara(window.getSize().x, window.getSize().y,60,0.1); // don ta el zfar :v? 
+	//Camera  Camara(window.getSize().x, window.getSize().y);
+	ModelObject Sprite, Sprite2, modelTest;
 	
-	ModelObject Sprite,Sprite2,modelTest;
-	modelTest.setPosition(glm::vec3(0, 0, 0));
+	ModelObject  ModeloCLONADO[32];
 	
-	modelTest.m_Mesh.CreateMeshFromObjModel("Models/test.obj");
-	//modelTest.m_Material.LoadTexture("Textres/grid.png");
+	//3D MODEL TESTING FORM OBJ
+	modelTest.setGlobalPosition(glm::vec3(6,7,8));
+	
+	modelTest.m_Mesh.CreateMeshFromObjModel("Models/suzane.obj");
+
+	modelTest.m_Material.CreateShader("Shaders/modelVertex.vert", "Shaders/modelFragment.frag");
+	
+	
+	GLuint shaderdelmodeloxd = modelTest.m_Material.GetProgram();
+
+	
+
+	/*
+	for (int i = 0; i<32; i++)
+	{
+		ModeloCLONADO[i].setGlobalPosition(glm::vec3(rand() % 100, rand() % 100, rand() % 100));
+		ModeloCLONADO[i].setGlobalPosition(glm::vec3(rand() % 360, rand() % 360, rand() % 360 ));
+		ModeloCLONADO[i].m_Mesh.CreateMeshFromExistingMesh(modelTest.m_Mesh);
+		ModeloCLONADO[i].m_Material.SetShader(shaderdelmodeloxd);
+	}
+	
+	*/
+
 
 	//Sprites
-	Sprite.setPosition(glm::vec3(0,0,-5));
-	Sprite2.setPosition(glm::vec3(1, 0, 6));
-	Sprite.m_Material.LoadTexture("Textures/grid.png");
-	Sprite.m_Material.CreateShader("Shaders/MainVertex.vert", "Shaders/MainFragment.frag");
 	
+	Sprite.setGlobalPosition(glm::vec3(0,0,3));
+	Sprite2.setGlobalPosition(glm::vec3(0, 0, -5));
+
+	Sprite.setGlobalRotation(glm::vec3(90, 90, 90));
+
+	Sprite.m_Material.LoadTexture("Textures/soldado.jpg");
+	Sprite2.m_Material.LoadTexture(Sprite.m_Material.returnTextureID());
+
+	Sprite.m_Material.CreateShader("Shaders/MainVertex.vert", "Shaders/MainFragment.frag");
 	Sprite.m_Mesh.MakeAsQuad(0, 0);
 
-	//this just copy the actual shader to another mesh
-	GLuint DEFAULT_SHADER_PROGRAM = Sprite.m_Material.GetProgram();
-	Sprite2.m_Material.SetShader(DEFAULT_SHADER_PROGRAM);
-	modelTest.m_Material.SetShader(DEFAULT_SHADER_PROGRAM);
+	Sprite2.m_Material.SetShader(Sprite.m_Material.GetProgram());
 	Sprite2.m_Mesh.MakeAsQuad(0, 0);
-	
-	
-	
+
 
 	bool running = true;
 
@@ -121,61 +151,61 @@ inline void ProccesWindow()
 			else if (event.type == sf::Event::EventType::KeyPressed)
 			{
 
-
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 				{
-					valueinput = 0.1f;
+					valueinput = 0.1f*aceleracion;
 
 				}
 				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-					valueinput = -0.1f;
-				
-									
-
-
+					valueinput = -0.1f*aceleracion;
 
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 				{
-					valueinput2 = 0.1;
+					valueinput2 = 0.1*aceleracion;
 					//	std::cout << "xd" << std::endl;
 
 				}
 				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-					valueinput2 = -0.1f;
-								
-									
+					valueinput2 = -0.1f*aceleracion;
 
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+				{
+					valueinpu3 += 0.1f;
 
-								if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-								{
-									valueinpu3 += 0.1f;
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+					valueinpu3 -= 0.1f;
 
-								}
-								else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-									valueinpu3 -= 0.1f;
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+				{
+					valueinput4 += 0.1f;
+					//std::cout << "xd" << std::endl;
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+					valueinput4 -= 0.1f;
 
-								if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-								{
-									valueinput4 += 0.1f;
-									//std::cout << "xd" << std::endl;
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::O))
+					LookCursor = true;
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+					LookCursor = false;
 
-								}
-								else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-									valueinput4 -= 0.1f;
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+					elevar = 1 * aceleracion;
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+					elevar = -1 * aceleracion;
 
-								if (sf::Keyboard::isKeyPressed(sf::Keyboard::O))
-									LookCursor = true;
-								else if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
-									LookCursor = false;
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+					aceleracion = shiftspeed;
+			
 
-							
-							//	Camara.translate(glm::vec3(valueinput2, 0, valueinput));		//Camara.translate(glm::vec3(valueinput4, 0, valueinpu3));
 
 			}
 			else if (event.type == sf::Event::EventType::KeyReleased)
 			{
 				valueinput = 0;
 				valueinput2 = 0;
+				elevar = 0;
+				aceleracion =1;
 			}
 			else if (event.type == sf::Event::Resized)
 			{
@@ -183,9 +213,6 @@ inline void ProccesWindow()
 				glViewport(0, 0, event.size.width, event.size.height);
 			}
 		}
-	
-
-	
 		if (LookCursor)
 		{
 			lastx = sf::Mouse::getPosition(window).x;
@@ -197,46 +224,60 @@ inline void ProccesWindow()
 			MouseDelta.x = (lastx - sf::Mouse::getPosition(window).x);
 			MouseDelta.y = (lasty - sf::Mouse::getPosition(window).y);
 		}
-		
-
-		//int centerx = (int)((float)window.getSize().x / 2);
-		//int centery = (int)((float)window.getSize().y / 2);
-		//sf::Mouse::setPosition(sf::Vector2i(centerx,centery));
-
 	
-
-		// clear the buffers
-		//gl  states
 		glEnable(GL_DEPTH_TEST);
+		//glEnable(GL_CULL_FACE);
+		//glCullFace(GL_BACK);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glClearColor(0.3,0.6, 0.4, 0);
-
-		//std::cout << "mouse delta x " << MouseDelta.x << " mouse delta y " << MouseDelta.y << std::endl;
-
-		//std::cout << "mouse x " << Mousex << " mouse  y " << Mousey << std::endl;
-
-		//Camara.setLocalRotation(glm::vec3(0, valueinput2, 0));
+		glClearColor(0.3,0.6, 0.4, 1);
+		
 		if(!firstPass)
 		{
 			Mousey -= MouseDelta.y*MouseMultplier;
 			Mousex -= MouseDelta.x*MouseMultplier;
 		}
+
+		glm::vec3 Positionxd = glm::vec3(valueinput2, 0, -valueinput);
+		Camara.setGlobalRotation(glm::vec3(Mousey, Mousex, 0));
+		Camara.translate(Positionxd);
+
+
+
+		//Camara.setLocalPosition(Positionxd);
+
+
 		
-		Camara.setRotation(glm::vec3(Mousey, Mousex, 0));
-		Camara.translate(glm::vec3(valueinput2, 0, -valueinput));
 
+		//Camara.setPosition(Positionxd);
 
+			angulogiro += 0.3f;
 
-		modelTest.Show(&Camara);
+		//modelTest.setGlobalRotation(glm::vec3(1, 1, 0),angulogiro);
+
+		//renderizado...
 		Sprite.Show(&Camara); 
 		Sprite2.Show(&Camara);
+        modelTest.Show(&Camara);
+		glm::vec3 camarapos = Camara.getGlobalPosition();
 
 
-		//Camara.setLocalRotation(glm::vec3(valueinput, valueinput2, 0));
-		//std::cout << valueinput << "  " << valueinput2 << std::endl;
-		
-		// MeshDrawOverHere (MainCameraMatrix)s
-		// end the current frame (internally swaps the front and back buffers)
+		//	std::cout << camarapos.x << " " << camarapos.y << " " << camarapos.z << std::endl;
+
+
+	    /*
+		for(int i =0;i<32;i++)
+		{
+			ModeloCLONADO[i].Show(&Camara);
+			ModeloCLONADO[i].setLocalRotation(glm::vec3(angulogiro, angulogiro, angulogiro));
+		}
+		*/
+
+		glm::vec3 camerarotation = Camara.getEulerGlobalRotaion();
+
+		std::cout << camerarotation.x << " " <<   camerarotation.y << " " << camerarotation.z << " " << std::endl;
+
+
+	
 		window.display();
 		firstPass = false;
 	}
@@ -244,15 +285,9 @@ inline void ProccesWindow()
 }
 
 
-
-
-
 int main()
 {
-	modelFormat  DataHolder;
-	modelParser::OpenModel("Models/test.obj", MODEL_FORMAT::OBJ,&DataHolder,0);
-	
-	std::system("pause");
+
 	ProccesWindow();
 	return 0;
 }

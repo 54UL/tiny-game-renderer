@@ -7,7 +7,9 @@
 
 //Esta clase abstrae el concepto de modelo en archivo, ya que pueden ser modelos 3d de los siguientes formatos: .obj, .3ds,.fbx etc
 
-
+//el problema con el indice es que solamente sirve para los vertices
+//las demas propiedades tambien vienen indexadas pero para esto
+//se convertira en un arreglo plano
 
 typedef struct
 {
@@ -28,11 +30,9 @@ public:
 	~modelFormat();
 
 	//RAW DATA
-
 	std::vector<glm::vec3> Vertex;
 	std::vector<glm::vec3> VertexNormal;
 	std::vector<glm::vec2> TextureCoords;
-	// x = vertex indice, y = texture corrd indice, z= vertex normal indice
 	std::vector<glm::ivec3> FaceIndices; 
 
 	//Functions
@@ -40,7 +40,8 @@ public:
 	glm::vec3  * Vertex_c_array();
 	glm::vec3  * VertexNormal_c_array();
 	glm::vec3  * TextureCoords_c_array();
-
+	unsigned int * VertexIndices_c_array();
+	void CleanUp();
 private:
 	//RAW POINTERS TO SAVE THIS SHIT IN A BINARY OR DO WHATEVER YOU WANT
 	VertexSpec     *m_RAW_MESH;
@@ -48,6 +49,5 @@ private:
 	glm::vec3      *m_vertex;
 	glm::vec2      *m_texCoords;
 	glm::vec3      *m_vertexNormals;
-	glm::ivec3     *m_FaceIndices;
 };
 

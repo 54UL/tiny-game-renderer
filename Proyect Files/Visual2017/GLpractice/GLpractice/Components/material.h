@@ -27,8 +27,6 @@ public:
 	void Use();
 
 private:
-	//esta clave sera para evitar ambiguedad en ejecucion ya que puede que un material sea identico a otro
-	unsigned int MATERIAL_KEY;
 
 	bool m_is_Active;
 

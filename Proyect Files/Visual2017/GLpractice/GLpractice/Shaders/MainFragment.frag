@@ -14,4 +14,5 @@ void main()
 
 //fgcolor = vec4 (0.4,0.5,0.1,0);
   fgcolor = texture(TEXTURE,Tc);
+
 }
