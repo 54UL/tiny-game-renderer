@@ -1,11 +1,8 @@
-﻿  modelParser.cpp
-c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelformat.h(52): warning C4091: 'typedef ': se ha omitido a la izquierda de 'modelFormat' cuando no hay ninguna variable declarada
-c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.h(11): warning C4091: 'typedef ': se ha omitido a la izquierda de 'MODEL_FEATURES' cuando no hay ninguna variable declarada
-c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.cpp(45): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.cpp(51): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.cpp(141): warning C4554: '&': compruebe la prioridad de operador para posibles errores; utilice paréntesis para indicar la prioridad
-c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.cpp(201): warning C4806: '|': operación no segura: ningún valor del tipo 'bool' promovido al tipo 'MODEL_FEATURES' puede igualar la constante proporcionada
-c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.cpp(201): warning C4554: '|': compruebe la prioridad de operador para posibles errores; utilice paréntesis para indicar la prioridad
-c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.cpp(244): error C2065: 'vx': identificador no declarado
-c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.cpp(245): error C2065: 'vy': identificador no declarado
-c:\users\saul\documents\github\tiny-game-renderer\proyect files\visual2017\glpractice\glpractice\system\modelhandling\modelparser.cpp(246): error C2065: 'vz': identificador no declarado
+﻿  ComponentBase.cpp
+  Generando código...
+  Compilando...
+  EntityMMU.cpp
+  EntityBase.cpp
+  Components.cpp
+  Generando código...
+  GLpractice.vcxproj -> C:\Users\Saul\Documents\GitHub\tiny-game-renderer\Proyect Files\Visual2017\GLpractice\Debug\GLpractice.exe

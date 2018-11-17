@@ -5,10 +5,10 @@
 #include "Camera.h"
 
 
-//Esto se le podria considerar gameobjetct? 
 
+//Clase game object,encargada de tener componentes
 
-class ModelObject: public Transform
+class ModelObject
 {
 
 public:
@@ -22,11 +22,8 @@ public:
 	~ModelObject();
 
 	//las mallas y materiales son conjunto asi que...
-	material  m_Material;//This should be a pointer or an array 
-	GLmesh    m_Mesh;
-
-
-	void Show(Camera * CurrentCamera);
+	//	material  m_Material;//This should be a pointer or an array 
+	//GLmesh    m_Mesh;
 
 
 	//Functions

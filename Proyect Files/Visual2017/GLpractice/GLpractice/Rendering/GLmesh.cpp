@@ -175,14 +175,14 @@ void GLmesh::CreateMesh(glm::vec3 * MeshData, glm::vec3 * VertexNormals, unsigne
 void GLmesh::MakeAsQuad(float width, float height)
 {
 	//Quad Vertices and texture coords (without normals)
-	glm::vec3 v[] =
+	 glm::vec3 v[] =
 	{
 		glm::vec3(1,-1, 0),
 		glm::vec3(-1,-1, 0),
 		glm::vec3(1, 1, 0),
 		glm::vec3(-1, 1, 0),
 	};
-	glm::vec2 Tc[]
+	 glm::vec2 Tc[]
 	{
 		glm::vec2(1,0),
 		glm::vec2(0,0),
@@ -249,9 +249,11 @@ void GLmesh::CreateMesh(VertexSpec * VertexSpecArray,unsigned int  * Indices,uns
 void GLmesh::CreateMeshFromObjModel(const char * fname)
 {
 	modelFormat TMPmodelbuffer;
-	modelParser::OpenModel(fname, MODEL_FORMAT::OBJ, &TMPmodelbuffer, false);
+	modelParser ParserInstance;
+	ParserInstance.OpenModel(fname, MODEL_FORMAT::OBJ, &TMPmodelbuffer);
 	//una vez en memoria lo convertimos al formato de modelo en open gl... to do
 //	glm::vec3 normaltest = glm::vec3(1, 1, 1);
+
 	this->CreateMesh(TMPmodelbuffer.Vertex_c_array(),
 		TMPmodelbuffer.VertexNormal_c_array(), TMPmodelbuffer.VertexIndices_c_array(),
 		TMPmodelbuffer.Vertex.size(), TMPmodelbuffer.VertexNormal.size(),

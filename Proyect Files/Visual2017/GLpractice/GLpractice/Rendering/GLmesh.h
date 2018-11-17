@@ -17,7 +17,7 @@ typedef enum MESH_GL_FORMAT {empty,IndexedDrawing,NonIndexedDrawing};
 
 //TO DO PAR ESTA CLASE:
 //no es necesario que las funciones sean miembros, convertir en una factoria? 
-//esta clase esta destinada a cambiar en otros proyectos
+
 
 class GLmesh
 {
@@ -27,6 +27,8 @@ public:
 	~GLmesh();
 
 	 //Creation and deletion
+
+
 	 //simple mono buffer direct for drawing without indexing
 	  void CreateMesh(glm::vec3 * MeshData, unsigned int VertexCount);//Generic model creation
 	 //dual buffer direct for drawing with tex coords without indexing
@@ -41,7 +43,7 @@ public:
 
 	 modelFormat  GetModelData();
 
-	 //Utility functions
+	 //Utility functions what should be in diferent classes 
 	 void CleanUpMesh();
 	 GLuint GetVAO();
 	 GLuint getAuxVBO();

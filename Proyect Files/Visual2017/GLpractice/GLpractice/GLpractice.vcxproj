@@ -20,30 +20,61 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Components\Camera.cpp" />
+    <ClCompile Include="Components\ECS\ComponentBase.cpp" />
+    <ClCompile Include="Components\ECS\Components.cpp" />
+    <ClCompile Include="Components\ECS\EntityBase.cpp" />
+    <ClCompile Include="Components\ECS\EntityMMU.cpp" />
+    <ClCompile Include="Components\ECS\EntitySystem.cpp" />
     <ClCompile Include="Components\material.cpp" />
     <ClCompile Include="Components\ModelObject.cpp" />
     <ClCompile Include="Components\Transform.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="main-UnitTesting.cpp" />
     <ClCompile Include="Rendering\GLmesh.cpp" />
     <ClCompile Include="Rendering\GLtexture.cpp" />
     <ClCompile Include="Rendering\Shader.cpp" />
+    <ClCompile Include="Rendering\UI\nanovg\nanovg.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="System\ArrayList.cpp" />
+    <ClCompile Include="System\AudioCore.cpp" />
     <ClCompile Include="System\FileIO.cpp" />
+    <ClCompile Include="System\GameApplication.cpp" />
+    <ClCompile Include="System\Game_Window.cpp" />
+    <ClCompile Include="System\InputManager.cpp" />
     <ClCompile Include="System\ModelHandling\modelFormat.cpp" />
     <ClCompile Include="System\ModelHandling\modelParser.cpp" />
+    <ClCompile Include="System\PhysicsCore.cpp" />
+    <ClCompile Include="System\RenderingCore.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Camera.h" />
+    <ClInclude Include="Components\ECS\ComponentBase.h" />
+    <ClInclude Include="Components\ECS\Component.h" />
+    <ClInclude Include="Components\ECS\EntityBase.h" />
+    <ClInclude Include="Components\ECS\ComponentsMMU.h" />
+    <ClInclude Include="Components\ECS\EntitySystem.h" />
     <ClInclude Include="Components\material.h" />
     <ClInclude Include="Components\ModelObject.h" />
     <ClInclude Include="Components\Transform.h" />
     <ClInclude Include="Rendering\GLmesh.h" />
     <ClInclude Include="Rendering\GLtexture.h" />
     <ClInclude Include="Rendering\Shader.h" />
+    <ClInclude Include="Rendering\UI\nanovg\fontstash.h" />
+    <ClInclude Include="Rendering\UI\nanovg\nanovg.h" />
+    <ClInclude Include="Rendering\UI\nanovg\nanovg_gl.h" />
+    <ClInclude Include="Rendering\UI\nanovg\nanovg_gl_utils.h" />
+    <ClInclude Include="Rendering\UI\nanovg\stb_image.h" />
+    <ClInclude Include="Rendering\UI\nanovg\stb_truetype.h" />
     <ClInclude Include="System\ArrayList.h" />
+    <ClInclude Include="System\AudioCore.h" />
     <ClInclude Include="System\FileIO.h" />
+    <ClInclude Include="System\GameApplication.h" />
+    <ClInclude Include="System\Game_Window.h" />
+    <ClInclude Include="System\InputManager.h" />
     <ClInclude Include="System\ModelHandling\modelFormat.h" />
     <ClInclude Include="System\ModelHandling\modelParser.h" />
+    <ClInclude Include="System\PhysicsCore.h" />
+    <ClInclude Include="System\RenderingCore.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

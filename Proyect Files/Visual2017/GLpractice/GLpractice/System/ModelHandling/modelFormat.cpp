@@ -19,6 +19,8 @@ VertexSpec * modelFormat::convertToVertexSpecArray()
 }
 
 
+
+//3 funciones para lo mismo ? desperdicio !! 
 //indexed vertices
 glm::vec3 * modelFormat::Vertex_c_array()
 {

@@ -21,11 +21,7 @@ public:
 	//Funciones
 
 	void SetActive(bool a);
-
-	
-
 	void Use();
-
 private:
 
 	bool m_is_Active;

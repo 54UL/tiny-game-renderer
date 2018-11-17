@@ -37,11 +37,26 @@
     <Filter Include="Archivos de encabezado\components">
       <UniqueIdentifier>{331b87ca-e883-4452-8e09-6e4beac1db14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\components\ECS">
+      <UniqueIdentifier>{e48a5f44-5ab4-4580-8bd9-ad1a17d8a729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\components\ECS">
+      <UniqueIdentifier>{a088b915-8d38-489c-954b-f8c60b39f476}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\system\ENGINE">
+      <UniqueIdentifier>{a8e47618-07da-40d6-9e6c-da2fa55ba3bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\System\ENGINE">
+      <UniqueIdentifier>{4a6b807c-44b3-4019-84b1-4b6d7d5cc6cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Rendering\nanovg">
+      <UniqueIdentifier>{c56779c9-267b-48dc-ad8d-c8501994229b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\render\nanovg">
+      <UniqueIdentifier>{9fcee1b4-043b-489e-ae47-50cc76f1a77c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="System\ArrayList.cpp">
       <Filter>Archivos de origen\system</Filter>
     </ClCompile>
@@ -74,6 +89,45 @@
     </ClCompile>
     <ClCompile Include="Components\Transform.cpp">
       <Filter>Archivos de origen\components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\ECS\ComponentBase.cpp">
+      <Filter>Archivos de origen\components\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\ECS\EntityBase.cpp">
+      <Filter>Archivos de origen\components\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\ECS\EntityMMU.cpp">
+      <Filter>Archivos de origen\components\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\ECS\EntitySystem.cpp">
+      <Filter>Archivos de origen\components\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Game_Window.cpp">
+      <Filter>Archivos de origen\system\ENGINE</Filter>
+    </ClCompile>
+    <ClCompile Include="System\GameApplication.cpp">
+      <Filter>Archivos de origen\system\ENGINE</Filter>
+    </ClCompile>
+    <ClCompile Include="System\InputManager.cpp">
+      <Filter>Archivos de origen\system\ENGINE</Filter>
+    </ClCompile>
+    <ClCompile Include="System\PhysicsCore.cpp">
+      <Filter>Archivos de origen\system\ENGINE</Filter>
+    </ClCompile>
+    <ClCompile Include="System\AudioCore.cpp">
+      <Filter>Archivos de origen\system\ENGINE</Filter>
+    </ClCompile>
+    <ClCompile Include="main-UnitTesting.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\ECS\Components.cpp">
+      <Filter>Archivos de origen\components\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="System\RenderingCore.cpp">
+      <Filter>Archivos de origen\system\ENGINE</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\UI\nanovg\nanovg.c">
+      <Filter>Archivos de origen\render\nanovg</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +163,57 @@
     </ClInclude>
     <ClInclude Include="Components\ModelObject.h">
       <Filter>Archivos de encabezado\components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\ECS\ComponentBase.h">
+      <Filter>Archivos de encabezado\components\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\ECS\EntityBase.h">
+      <Filter>Archivos de encabezado\components\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\ECS\EntitySystem.h">
+      <Filter>Archivos de encabezado\components\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="System\AudioCore.h">
+      <Filter>Archivos de encabezado\System\ENGINE</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Game_Window.h">
+      <Filter>Archivos de encabezado\System\ENGINE</Filter>
+    </ClInclude>
+    <ClInclude Include="System\GameApplication.h">
+      <Filter>Archivos de encabezado\System\ENGINE</Filter>
+    </ClInclude>
+    <ClInclude Include="System\InputManager.h">
+      <Filter>Archivos de encabezado\System\ENGINE</Filter>
+    </ClInclude>
+    <ClInclude Include="System\PhysicsCore.h">
+      <Filter>Archivos de encabezado\System\ENGINE</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\ECS\ComponentsMMU.h">
+      <Filter>Archivos de encabezado\components\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="System\RenderingCore.h">
+      <Filter>Archivos de encabezado\System\ENGINE</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\ECS\Component.h">
+      <Filter>Archivos de encabezado\components\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\UI\nanovg\nanovg.h">
+      <Filter>Archivos de encabezado\Rendering\nanovg</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\UI\nanovg\nanovg_gl.h">
+      <Filter>Archivos de encabezado\Rendering\nanovg</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\UI\nanovg\nanovg_gl_utils.h">
+      <Filter>Archivos de encabezado\Rendering\nanovg</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\UI\nanovg\stb_image.h">
+      <Filter>Archivos de encabezado\Rendering\nanovg</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\UI\nanovg\stb_truetype.h">
+      <Filter>Archivos de encabezado\Rendering\nanovg</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\UI\nanovg\fontstash.h">
+      <Filter>Archivos de encabezado\Rendering\nanovg</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

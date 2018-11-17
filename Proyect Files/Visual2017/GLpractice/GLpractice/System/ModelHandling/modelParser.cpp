@@ -1,8 +1,5 @@
 #include "modelParser.h"
 
-//NOTA: ESTE CODIGO ESTA SUPER MAL ELABORADO Y SE PUEDE NOTAR EL HARDCODING QUE SE HIZO, TO DO... : codigo repetido hacerlo
-//funciones, y hacer generica la funcion de "find space"
-
 
 //STD INCLUDES
 #include <fstream> // from da hell std
@@ -10,65 +7,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-
-
-#define toDigit(c) (c-'0')
-
-
-
-//estas funciones hacerlas miembros
-
-//pos means the character where is going to start the search
-static int findSpace(std::string * str, unsigned int pos, bool FindFirstorLast)
-{
-	std::string::iterator strIterator = str->begin();
-	strIterator += pos;
-	unsigned int count = 0 + pos;
-	while (strIterator != str->end())
-	{
-		if (FindFirstorLast ? *strIterator == ' ' : *std::next(strIterator) != ' ')
-			return count;
-		count++;
-		strIterator++;
-	}
-	return -1;
-}
-
-
-
-
-static glm::ivec3 getParsedFaceIndex(std::string & vertIndexstr)
-{
-	glm::vec3 tmpvec3;
-	unsigned int pos1 = vertIndexstr.find("/", 0);
-	std::string xd1 = vertIndexstr.substr(0, pos1).c_str();
-	tmpvec3.x = atoi(xd1.c_str());
-
-	if (vertIndexstr.compare(pos1, 2, "//") == 0)
-	{
-		tmpvec3.y = 0;
-		std::string xd = vertIndexstr.substr(pos1 + 2).c_str();
-		tmpvec3.z = atoi(xd.c_str());
-	}
-	else
-	{
-		std::cout << "texture coords indecing not implemented" << std::endl;
-	}
-
-	return tmpvec3;
-}
-
-
-
-static glm::vec3 getParsedVertex3(std::string & vertStr)
-{
-
-
-
-}
-
-
-
 
 
 modelParser::modelParser()
@@ -83,7 +21,7 @@ modelParser::~modelParser()
 }
 
 void
-modelParser::OpenModel(const char  * fname,  MODEL_FORMAT FORMAT, modelFormat * container, bool DEBUG_INFO)
+modelParser::OpenModel(const char  * fname,  MODEL_FORMAT FORMAT, modelFormat * container)
 {
 	//variables
 	char  buffer[64];
@@ -94,7 +32,7 @@ modelParser::OpenModel(const char  * fname,  MODEL_FORMAT FORMAT, modelFormat * 
 
 	if (!DOC.is_open())
 	{
-		std::cout << "Error opening the 3d model file : " << fname << std::endl;
+		std::cout << "Error opening the 3d .obj model file : " << fname << std::endl;
 		return;
 	}
 
@@ -107,6 +45,8 @@ modelParser::OpenModel(const char  * fname,  MODEL_FORMAT FORMAT, modelFormat * 
     //OBJ PARSER
 	case MODEL_FORMAT::OBJ:
 
+		//HACER MODULAR ESTE PEDO PARA NO TENER MUCHO CODIGO EN EL SWITCH
+
 		//aqui se debera de hacer un primer pass para verificar con que datos va a trabajar el parser
 		
 		while (1)
@@ -115,20 +55,20 @@ modelParser::OpenModel(const char  * fname,  MODEL_FORMAT FORMAT, modelFormat * 
 
 			if (DOC.eof())
 			{
-			
 				break;
 			}
 				
 			std::string headerL (buffer);
 
-
 			if (headerL.compare(0, 2, "v ") == 0)
 			{
 				m_CurrentContentFeatures = m_CurrentContentFeatures | MODEL_FEATURES::vertex;
+				continue;
 			}
 			else if (headerL.compare(0, 2, "vt") == 0)
 			{
 				m_CurrentContentFeatures = m_CurrentContentFeatures | MODEL_FEATURES::textureCoord;
+				continue;
 			}
 			else if (headerL.compare(0, 2, "vn") == 0)
 			{
@@ -158,103 +98,28 @@ modelParser::OpenModel(const char  * fname,  MODEL_FORMAT FORMAT, modelFormat * 
 
 			std::string Line(buffer);
 
-			if (Line.compare(0, 2, "v ") == 0 )
-			{
-				
-				int vx1 = findSpace(&Line, 1, false);
-				int vx2 = Line.find(' ', vx1 + 1);
-				std::string vx = Line.substr(vx1 + 1, (vx2 - vx1));
-				int vy2 = findSpace(&Line, vx2, true);
-				std::string vy = Line.substr(vx2 + 1, vy2 - vx1);
-				int vz1 = findSpace(&Line, vy2 + 1, true);
-				std::string vz = Line.substr(vz1 + 1);
-
-				container->Vertex.push_back(glm::vec3(atof(vx.c_str()), atof(vy.c_str()), atof(vz.c_str())));
-			//	std::cout << "Vertex : " << atof(vx.c_str()) << " " << atof(vy.c_str()) << " " << atof(vz.c_str()) << std::endl;
-			}
+			if (Line.compare(0, 2, "v ") == 0)
+				container->Vertex.push_back(this->getParsedVector3(Line));
 			else if (Line.compare(0, 2, "vt") == 0)
-			{
-				int vx1 = findSpace(&Line, 1, false);
-				int vx2 = Line.find(' ', vx1 + 1);
-				std::string vx = Line.substr(vx1 + 1, (vx2 - vx1));
-				int vy2 = findSpace(&Line, vx2, true);
-				std::string vy = Line.substr(vx2 + 1);
-				container->TextureCoords.push_back(glm::vec2(atof(vx.c_str()), atof(vy.c_str()) ));
-
-				//std::cout << "Tex Coord : " << atof(vx.c_str()) << " " << atof(vy.c_str()) << std::endl;
-			}
+				container->TextureCoords.push_back(this->getParsedVector2(Line));
 			else if (Line.compare(0, 2, "vn") == 0)
+				container->VertexNormal.push_back(this->getParsedVector3(Line));
+			else if (Line.compare(0, 2, "f ") == 0) 
 			{
-				int vx1 = findSpace(&Line, 1, false);
-				int vx2 = Line.find(' ', vx1 + 1);
-				std::string vx = Line.substr(vx1 + 1, (vx2 - vx1));
-				int vy2 = findSpace(&Line, vx2, true);
-				std::string vy = Line.substr(vx2 + 1, vy2 - vx1);
-				int vz1 = findSpace(&Line, vy2 + 1, true);
-				std::string vz = Line.substr(vz1 + 1);
-				container->VertexNormal.push_back(glm::vec3(atof(vx.c_str()), atof(vy.c_str()), atof(vz.c_str())));
-				//std::cout << "Vertex Normal : " << atof(vx.c_str()) << " " << atof(vy.c_str()) << " " << atof(vz.c_str()) << std::endl;
-			}
-			else if (Line.compare(0, 2, "f ") == 0) // LECTURA DE CARAS, ESTA PARTE ES LA COMPLICADA HIJOSU CHINGADA MADRE
-			{
-				//ESTE ES EL CASO EN DODE LA CARA ESTA COMPUESTA POR INDICE DE VERTICE/TEXTURA/NORMAL(esta madre va explotar si no se tiene el formato adecuado)
-				if (m_CurrentContentFeatures == MODEL_FEATURES::textureCoord | MODEL_FEATURES::vertexNormal)
-				{
-					//buscamos las islas de informacion 
-					int vx1 = findSpace(&Line, 1, false);
-					int vx2 = Line.find(' ', vx1 + 1);
-					std::string vx = Line.substr(vx1 + 1, (vx2 - vx1) - 1);
-					int vy2 = findSpace(&Line, vx2, true);
-					std::string vy = Line.substr(vx2 + 1, (vy2 - vx1) - 1);
-					int vz1 = findSpace(&Line, vy2 + 1, true);
-					int vz2 = Line.find(' ', vz1 + 1);
-					std::string vz = Line.substr(vz1 + 1, (vz2 - vz1) - 1);
-					std::string vw = Line.substr(vz2 + 1);
-					//Separamos los respectivos indices
-					//Analisis del formato de cadena x/x/x
-					glm::ivec3 Vertexx = getParsedFaceIndex(vx);
-					glm::ivec3 Vertexy = getParsedFaceIndex(vy);
-					glm::ivec3 Vertexz = getParsedFaceIndex(vz);
-				//	glm::ivec3 Vertexw = getParsedFaceIndex(vw);  no aceptaremos modelos con 4 vertices por cara (de afuerzas triangulado)
-					container->FaceIndices.push_back(Vertexx);
-					container->FaceIndices.push_back(Vertexy);
-					container->FaceIndices.push_back(Vertexz);
-					//container->FaceIndices.push_back(Vertexw);
-					//	std::cout << Vertexx.x << "/" << Vertexx.y << "/" << Vertexx.z << " "
-					//		<< Vertexy.x << "/" << Vertexy.y << "/" << Vertexy.z << " "
-					//		<< Vertexz.x << "/" << Vertexz.y << "/" << Vertexz.z << " "
-					//		<< Vertexw.x << "/" << Vertexw.y << "/" << Vertexw.z << std::endl;
-
-				}
-				else  if (m_CurrentContentFeatures == MODEL_FEATURES::textureCoord)
-				{
-					
-				}
-				else if (m_CurrentContentFeatures == MODEL_FEATURES::vertexNormal)
-				{
-
-					//buscamos las islas de informacion 
-			        
-					unsigned int firstpos = findSpace(&Line, 0, false);
-
-
-
-					 
-	
-				//	glm::ivec3 Vertexx = getParsedFaceIndex(vx);
-				//	glm::ivec3 Vertexy = getParsedFaceIndex(vy);
-				//	glm::ivec3 Vertexz = getParsedFaceIndex(vz);
-			
-
-
-				//	container->FaceIndices.push_back(Vertexx);
-				//	container->FaceIndices.push_back(Vertexy);
-				//	container->FaceIndices.push_back(Vertexz);
-			
-				}
-				else
-					std::cout << "no implementado" << std::endl;
-
+				//las caras deben de ser triangulares
+				// container->FaceIndices =
+				int vertice1a = findSpace(&Line, 1,false);
+				int vertice1b = Line.find(" ", vertice1a+1);
+				std::string isla1 = Line.substr(vertice1a, vertice1b - vertice1a);
+				container->FaceIndices.push_back(getParsedFaceIndex(isla1));
+				int vertice2a = findSpace(&Line, vertice1b,false);
+				int vertice2b = Line.find(" ", vertice2a+1);
+				std::string isla2 = Line.substr(vertice2a, vertice2b - vertice2a);
+				container->FaceIndices.push_back(getParsedFaceIndex(isla2));
+				int vertice3a = findSpace(&Line, vertice2b, false);
+				int vertice3b = Line.find("\r", vertice3a+1);
+				std::string isla3 = Line.substr(vertice3a, vertice3b - vertice3a);
+				container->FaceIndices.push_back(getParsedFaceIndex(isla3));
 			}
 			else
 			{
@@ -273,4 +138,63 @@ modelParser::OpenModel(const char  * fname,  MODEL_FORMAT FORMAT, modelFormat * 
 
 	}
 	DOC.close();
+}
+
+//si es verdadero retorna encuanto encuentre un espacio, si no se supone que hay un espacio actual y encuanto encuentre otra cosa que no sea espacio
+int modelParser::findSpace(std::string * str, unsigned int pos, bool FindFirstorLast)
+{
+	std::string::iterator strIterator = str->begin();
+	strIterator += pos;
+	unsigned int count = 0 + pos;
+	while (strIterator != str->end())
+	{
+		if (FindFirstorLast ? *strIterator == ' ' : *std::next(strIterator) != ' ')
+			return count;
+		count++;
+		strIterator++;
+	}
+	return -1;
+}
+
+glm::ivec3 modelParser::getParsedFaceIndex(std::string & vertIndexstr)
+{
+	glm::vec3 tmpvec3;
+	unsigned int pos1 = vertIndexstr.find("/", 0);
+	std::string xd1 = vertIndexstr.substr(0, pos1).c_str();
+	tmpvec3.x = atoi(xd1.c_str());
+
+	if (vertIndexstr.compare(pos1, 2, "//") == 0)
+	{
+		tmpvec3.y = 0;
+		std::string xd = vertIndexstr.substr(pos1 + 2).c_str();
+		tmpvec3.z = atoi(xd.c_str());
+	}
+	else
+	{
+		std::cout << "texture coords indexing not implemented" << std::endl;
+	}
+
+	return tmpvec3;
+}
+
+glm::vec3 modelParser::getParsedVector3(std::string & IslandStr)
+{
+	int vx1 = findSpace(&IslandStr, 1, false);
+	int vx2 = IslandStr.find(' ', vx1 + 1);
+	std::string vx = IslandStr.substr(vx1 + 1, (vx2 - vx1));
+	int vy2 = findSpace(&IslandStr, vx2, true);
+	std::string vy = IslandStr.substr(vx2 + 1, vy2 - vx1);
+	int vz1 = findSpace(&IslandStr, vy2 + 1, true);
+	std::string vz = IslandStr.substr(vz1 + 1);
+	return glm::vec3(atof(vx.c_str()), atof(vy.c_str()), atof(vz.c_str()));
+}
+
+glm::vec2 modelParser::getParsedVector2(std::string & IslandStr)
+{
+	int vx1 = findSpace(&IslandStr, 1, false);
+	int vx2 = IslandStr.find(' ', vx1 + 1);
+	std::string vx = IslandStr.substr(vx1 + 1, (vx2 - vx1));
+	int vy2 = findSpace(&IslandStr, vx2, true);
+	std::string vy = IslandStr.substr(vx2 + 1);
+	return glm::vec2(atof(vx.c_str()), atof(vy.c_str()));
 }
