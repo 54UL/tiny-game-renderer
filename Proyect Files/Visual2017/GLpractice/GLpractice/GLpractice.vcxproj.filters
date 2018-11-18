@@ -55,6 +55,18 @@
     <Filter Include="Archivos de origen\render\nanovg">
       <UniqueIdentifier>{9fcee1b4-043b-489e-ae47-50cc76f1a77c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de origen\system\Utils">
+      <UniqueIdentifier>{d1d3def7-80ad-4f90-9c21-bd7986acf7ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\System\Utils">
+      <UniqueIdentifier>{6fb13e96-a41d-41cf-9e3d-063498067cf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\System\Utils\Allocators">
+      <UniqueIdentifier>{02664d2b-f146-4223-9d9c-386de7b13cc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\system\Utils\Allocators">
+      <UniqueIdentifier>{48782091-e64a-4a6b-91ec-240e1597d45d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="System\ArrayList.cpp">
@@ -128,6 +140,27 @@
     </ClCompile>
     <ClCompile Include="Rendering\UI\nanovg\nanovg.c">
       <Filter>Archivos de origen\render\nanovg</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS_testing_main.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Utils\Allocators\StackAllocator.cpp">
+      <Filter>Archivos de origen\system\Utils\Allocators</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Utils\Allocators\GenericAllocator.cpp">
+      <Filter>Archivos de origen\system\Utils\Allocators</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugSystem.cpp">
+      <Filter>Archivos de origen\system</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemBase.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskManager.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Task.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +247,24 @@
     </ClInclude>
     <ClInclude Include="Rendering\UI\nanovg\fontstash.h">
       <Filter>Archivos de encabezado\Rendering\nanovg</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Utils\Allocators\GenericAllocator.h">
+      <Filter>Archivos de encabezado\System\Utils\Allocators</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Utils\Allocators\StackAllocator.h">
+      <Filter>Archivos de encabezado\System\Utils\Allocators</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugSystem.h">
+      <Filter>Archivos de encabezado\System</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemBase.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskManager.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Task.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

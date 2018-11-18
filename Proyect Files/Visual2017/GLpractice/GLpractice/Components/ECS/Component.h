@@ -15,8 +15,6 @@ class componente : public component<componente>
 
 */
 
-template<typename tipo> struct componentType { tipo * component_ptr; };
-
 
 template<typename ComponentType>
 class Component
@@ -33,13 +31,25 @@ public:
 	~Component();
 	
 
-	
-	//Tamaño
-	static const componentType<ComponentType> m_instance;
 
-	unsigned int getComponentTypeID();
-	std::size_t  getComponentSize();
-	void         setEntity(unsigned int E_ID);
+	 //component type info
+	 struct componentType { typedef  ComponentType  current_ct; };
+
+
+
+	constexpr unsigned int getComponentTypeID();
+	constexpr std::size_t  getComponentSize();
+	constexpr void         setEntity(unsigned int E_ID);
 
 };
 
+template<typename ComponentType>
+inline Component<ComponentType>::Component()
+{
+
+}
+
+template<typename ComponentType>
+inline Component<ComponentType>::~Component()
+{
+}

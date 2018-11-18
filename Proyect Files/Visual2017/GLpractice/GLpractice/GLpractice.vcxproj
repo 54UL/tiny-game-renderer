@@ -28,13 +28,18 @@
     <ClCompile Include="Components\material.cpp" />
     <ClCompile Include="Components\ModelObject.cpp" />
     <ClCompile Include="Components\Transform.cpp" />
-    <ClCompile Include="main-UnitTesting.cpp" />
+    <ClCompile Include="DebugSystem.cpp" />
+    <ClCompile Include="ECS_testing_main.cpp" />
+    <ClCompile Include="main-UnitTesting.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Rendering\GLmesh.cpp" />
     <ClCompile Include="Rendering\GLtexture.cpp" />
     <ClCompile Include="Rendering\Shader.cpp" />
     <ClCompile Include="Rendering\UI\nanovg\nanovg.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="SystemBase.cpp" />
     <ClCompile Include="System\ArrayList.cpp" />
     <ClCompile Include="System\AudioCore.cpp" />
     <ClCompile Include="System\FileIO.cpp" />
@@ -45,6 +50,10 @@
     <ClCompile Include="System\ModelHandling\modelParser.cpp" />
     <ClCompile Include="System\PhysicsCore.cpp" />
     <ClCompile Include="System\RenderingCore.cpp" />
+    <ClCompile Include="System\Utils\Allocators\GenericAllocator.cpp" />
+    <ClCompile Include="System\Utils\Allocators\StackAllocator.cpp" />
+    <ClCompile Include="Task.cpp" />
+    <ClCompile Include="TaskManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Camera.h" />
@@ -56,6 +65,7 @@
     <ClInclude Include="Components\material.h" />
     <ClInclude Include="Components\ModelObject.h" />
     <ClInclude Include="Components\Transform.h" />
+    <ClInclude Include="DebugSystem.h" />
     <ClInclude Include="Rendering\GLmesh.h" />
     <ClInclude Include="Rendering\GLtexture.h" />
     <ClInclude Include="Rendering\Shader.h" />
@@ -65,6 +75,7 @@
     <ClInclude Include="Rendering\UI\nanovg\nanovg_gl_utils.h" />
     <ClInclude Include="Rendering\UI\nanovg\stb_image.h" />
     <ClInclude Include="Rendering\UI\nanovg\stb_truetype.h" />
+    <ClInclude Include="SystemBase.h" />
     <ClInclude Include="System\ArrayList.h" />
     <ClInclude Include="System\AudioCore.h" />
     <ClInclude Include="System\FileIO.h" />
@@ -75,6 +86,10 @@
     <ClInclude Include="System\ModelHandling\modelParser.h" />
     <ClInclude Include="System\PhysicsCore.h" />
     <ClInclude Include="System\RenderingCore.h" />
+    <ClInclude Include="System\Utils\Allocators\GenericAllocator.h" />
+    <ClInclude Include="System\Utils\Allocators\StackAllocator.h" />
+    <ClInclude Include="Task.h" />
+    <ClInclude Include="TaskManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

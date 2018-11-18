@@ -6,6 +6,9 @@
 #include "..\System\ModelHandling\modelParser.h"
 #include <iostream>
 
+
+//to do, checar referencias hacia adelante,lreferences y rreferences
+
 GLmesh::GLmesh() 
 {
 	m_VertexCount = m_VertexNormalCount = m_VertexTextureCoordCount = 0;
