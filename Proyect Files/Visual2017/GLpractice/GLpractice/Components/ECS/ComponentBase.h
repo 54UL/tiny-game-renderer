@@ -54,7 +54,7 @@ public:
 
 	//queries and predicates
 	template<typename T>
-	bool contains(const Component<T>::componentType& component);
+	bool contains();
 
 
 	template<typename T>

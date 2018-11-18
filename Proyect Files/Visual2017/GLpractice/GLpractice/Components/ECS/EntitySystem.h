@@ -17,7 +17,7 @@ public:
 
 
 	//Functions
-	bool pushLogicalFunction(std::function<void(const  EntitySystem * raw_scene)> function);
+//	bool pushLogicalFunction(std::function<void(const  EntitySystem * raw_scene)> function);
 
 	
 };

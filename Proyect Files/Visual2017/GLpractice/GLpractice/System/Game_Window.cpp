@@ -2,11 +2,3 @@
 
 
 
-Game_Window::Game_Window()
-{
-}
-
-
-Game_Window::~Game_Window()
-{
-}

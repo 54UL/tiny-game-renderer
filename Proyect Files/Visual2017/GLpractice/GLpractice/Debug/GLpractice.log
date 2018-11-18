@@ -1,5 +1,4 @@
 ﻿  ECS_testing_main.cpp
-  EntityMMU.cpp
   EntityBase.cpp
   ComponentBase.cpp
   Generando código...

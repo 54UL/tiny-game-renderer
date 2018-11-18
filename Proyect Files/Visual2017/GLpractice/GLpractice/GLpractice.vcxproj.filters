@@ -67,6 +67,18 @@
     <Filter Include="Archivos de origen\system\Utils\Allocators">
       <UniqueIdentifier>{48782091-e64a-4a6b-91ec-240e1597d45d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de origen\system\Threading">
+      <UniqueIdentifier>{80f1d41a-da4d-429b-9f8d-ef2bc068a8cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Rendering\glBackend">
+      <UniqueIdentifier>{15d6e6fa-e790-4d53-9617-7e06d6aa3f5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\render\glBackend">
+      <UniqueIdentifier>{db4ff648-3b55-439e-907c-17f7d499c1ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\System\Threading">
+      <UniqueIdentifier>{d8aecc8c-00d7-4f02-a0cf-df96ad5dca4d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="System\ArrayList.cpp">
@@ -74,15 +86,6 @@
     </ClCompile>
     <ClCompile Include="System\FileIO.cpp">
       <Filter>Archivos de origen\system</Filter>
-    </ClCompile>
-    <ClCompile Include="Rendering\Shader.cpp">
-      <Filter>Archivos de origen\render</Filter>
-    </ClCompile>
-    <ClCompile Include="Rendering\GLtexture.cpp">
-      <Filter>Archivos de origen\render</Filter>
-    </ClCompile>
-    <ClCompile Include="Rendering\GLmesh.cpp">
-      <Filter>Archivos de origen\render</Filter>
     </ClCompile>
     <ClCompile Include="System\ModelHandling\modelFormat.cpp">
       <Filter>Archivos de origen\system\ModelLoading</Filter>
@@ -150,17 +153,26 @@
     <ClCompile Include="System\Utils\Allocators\GenericAllocator.cpp">
       <Filter>Archivos de origen\system\Utils\Allocators</Filter>
     </ClCompile>
-    <ClCompile Include="DebugSystem.cpp">
-      <Filter>Archivos de origen\system</Filter>
+    <ClCompile Include="Components\ECS\SystemBase.cpp">
+      <Filter>Archivos de origen\components\ECS</Filter>
     </ClCompile>
-    <ClCompile Include="SystemBase.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="Rendering\GLmesh.cpp">
+      <Filter>Archivos de origen\render\glBackend</Filter>
     </ClCompile>
-    <ClCompile Include="TaskManager.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="Rendering\GLtexture.cpp">
+      <Filter>Archivos de origen\render\glBackend</Filter>
     </ClCompile>
-    <ClCompile Include="Task.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="Rendering\Shader.cpp">
+      <Filter>Archivos de origen\render\glBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="System\DebugSystem.cpp">
+      <Filter>Archivos de encabezado\System</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Threading\TaskManager.cpp">
+      <Filter>Archivos de origen\system\Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Threading\Task.cpp">
+      <Filter>Archivos de origen\system\Threading</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -175,15 +187,6 @@
     </ClInclude>
     <ClInclude Include="System\ModelHandling\modelParser.h">
       <Filter>Archivos de encabezado\System\ModelLoading</Filter>
-    </ClInclude>
-    <ClInclude Include="Rendering\GLmesh.h">
-      <Filter>Archivos de encabezado\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="Rendering\GLtexture.h">
-      <Filter>Archivos de encabezado\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="Rendering\Shader.h">
-      <Filter>Archivos de encabezado\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="Components\Camera.h">
       <Filter>Archivos de encabezado\components</Filter>
@@ -201,9 +204,6 @@
       <Filter>Archivos de encabezado\components\ECS</Filter>
     </ClInclude>
     <ClInclude Include="Components\ECS\EntityBase.h">
-      <Filter>Archivos de encabezado\components\ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\ECS\EntitySystem.h">
       <Filter>Archivos de encabezado\components\ECS</Filter>
     </ClInclude>
     <ClInclude Include="System\AudioCore.h">
@@ -254,17 +254,29 @@
     <ClInclude Include="System\Utils\Allocators\StackAllocator.h">
       <Filter>Archivos de encabezado\System\Utils\Allocators</Filter>
     </ClInclude>
-    <ClInclude Include="DebugSystem.h">
+    <ClInclude Include="Components\ECS\SystemBase.h">
+      <Filter>Archivos de encabezado\components\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="System\DebugSystem.h">
       <Filter>Archivos de encabezado\System</Filter>
     </ClInclude>
-    <ClInclude Include="SystemBase.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Rendering\GLmesh.h">
+      <Filter>Archivos de encabezado\Rendering\glBackend</Filter>
     </ClInclude>
-    <ClInclude Include="TaskManager.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Rendering\GLtexture.h">
+      <Filter>Archivos de encabezado\Rendering\glBackend</Filter>
     </ClInclude>
-    <ClInclude Include="Task.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Rendering\Shader.h">
+      <Filter>Archivos de encabezado\Rendering\glBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Threading\Task.h">
+      <Filter>Archivos de encabezado\System\Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Threading\TaskManager.h">
+      <Filter>Archivos de encabezado\System\Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\ECS\EntitySystem.h">
+      <Filter>Archivos de encabezado\components\ECS</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
